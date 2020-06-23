@@ -6,6 +6,8 @@ import Cart from './components/Cart/Cart'
 import Login from './components/Login/Login'
 import Checkout from './components/Checkout/Checkout'
 import Confirmation from './components/Confirmation/Confirmation'
+import About from './components/About/About'
+import Contact from './components/Contact/Contact'
 
 export default(
     <Switch>
@@ -15,5 +17,7 @@ export default(
         <Route path='/login' component={Login}/>
         <Route path='/checkout' component={Checkout}/>
         <Route path='/confirmation' component={Confirmation}/>
+        <Route path='/about' component={About}/>
+        <Route path='/contact' component={Contact}/>
     </Switch>
 )
