@@ -21,6 +21,8 @@ class Navbar extends Component {
                         <br/>
                         <Link to='/contact'>Contact Us</Link>
                         <br/>
+                        <Link to='/login'>Login</Link>
+                        <br/>
                         <Link to='/cart'>Cart</Link>
                     </nav>
                 </div>
