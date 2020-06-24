@@ -1,4 +1,4 @@
-require('dotenv').config
+require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
 
@@ -13,8 +13,8 @@ app.use(express.json())
 app.get('',)
 app.get('',)
 app.get('',)
-app.post('',)
-app.post('',)
+app.post('/auth/login', authCtrl.login)
+app.post('/auth/register', authCtrl.register)
 app.post('',)
 app.patch('',)
 app.delete('',)
