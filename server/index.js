@@ -21,11 +21,11 @@ app.use(
 
 app.get('/auth/user', authCtrl.getUser)
 app.get('/products', invCtrl.getInventory)
-app.get('',)
+app.get('',)//product??
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/register', authCtrl.register)
 app.post('/admin/product', invCtrl.addProduct)
-app.patch('/admin/product/:id', invCtrl.updateProduct)
+app.put('/admin/product/:id', invCtrl.updateProduct)
 app.delete('/auth/logout', authCtrl.logout)
 app.delete('/admin/product/:id', invCtrl.deleteProduct)
 
