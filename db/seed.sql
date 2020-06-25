@@ -25,7 +25,7 @@ CREATE TABLE "users" (
   "full_name" varchar(100),
   "email" varchar(200),
   "password" text,
-  "created_at" timestamp
+  "created_at" timestamp DEFAULT now()
 );
 
 CREATE TABLE "admins" (
@@ -41,7 +41,8 @@ CREATE TABLE "products" (
   "price" decimal,
   "status" products_status,
   "merchant_id" int NOT NULL,
-  "created_at" timestamp,
+  "created_at" timestamp DEFAULT now(),
+  "last_edit" timestamp,
   "category" product_type,
   "description" text,
   "notes" text
@@ -58,8 +59,9 @@ CREATE TABLE "orders" (
   "id" SERIAL PRIMARY KEY,
   "user_id" int NOT NULL,
   "total" decimal,
-  "created_at" timestamp,
+  "created_at" timestamp DEFAULT now(),
   "status" order_status
+  "status_changed" timestamp
 );
 
 CREATE TABLE "merchants" (
@@ -70,8 +72,35 @@ CREATE TABLE "merchants" (
 
 ALTER TABLE "admins" ADD FOREIGN KEY ("admin_id") REFERENCES "users" ("id");
 
+ALTER TABLE "orders" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
+
 ALTER TABLE "products" ADD FOREIGN KEY ("merchant_id") REFERENCES "merchants" ("id");
 
 ALTER TABLE "order_items" ADD FOREIGN KEY ("order_id") REFERENCES "orders" ("id");
 
 ALTER TABLE "order_items" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
+
+
+
+
+
+
+
+
+
+
+
+test:
+CREATE TABLE "test" (
+  "id" SERIAL PRIMARY KEY,
+  "name" text,
+  "created_at" timestamp DEFAULT now(),
+  "last_edit" timestamp
+);
+
+insert into test (name) values ('brian')
+
+
+update test
+set name = 'brian2', last_edit = now()
+where id = 1
