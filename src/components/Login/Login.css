@@ -1,0 +1,9 @@
+form {
+    width: 100vw
+}
+
+input {
+    display: flex;
+    align-items: column;
+    justify-content: center;
+}
