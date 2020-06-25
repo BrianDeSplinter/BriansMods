@@ -1,0 +1,1 @@
+INSERT INTO orders (user_id, total, status) VALUES ($1, $2, $3) RETURNING id;
