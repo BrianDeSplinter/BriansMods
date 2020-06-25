@@ -25,8 +25,9 @@ module.exports = {
             
             const {id} = req.params
             const {name, image_url, price, status, merchant_id, category, description, notes} = req.body
+            const lastEdit = 'now()'
 
-            await db.update_product(name, image_url, price, status, merchant_id, category, description, notes, id)
+            await db.update_product(name, image_url, price, status, merchant_id, lastEdit, category, description, notes, id)
 
             res.status(200).send('Product Updated')
         },
