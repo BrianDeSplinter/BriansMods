@@ -13,12 +13,12 @@ module.exports = {
             } else {
                 const authenticated = bcrypt.compareSync(password, user[0].password)
                 if(authenticated){
-                    req.user = {
+                    req.session.user = {
                         userId: user[0].id,
                         email: user[0].email,
                         name: user[0].full_name
                     }
-                    res.status(200).send(req.user)
+                    res.status(200).send(req.session.user)
                 } else {
                     res.status(403).send('Username or Password incorrect')
                 }
@@ -28,7 +28,7 @@ module.exports = {
     register:
         async (req, res) => {
             const db = req.app.get('db')
-            const {full_name, email, password} = req.body
+            const {name, email, password} = req.body
 
             const existingUser = await db.check_user(email)
 
@@ -39,14 +39,29 @@ module.exports = {
             const salt = bcrypt.genSaltSync(10)
             const hash = bcrypt.hashSync(password, salt)
 
-            const newUser = await db.register_user([email, hash])
+            const newUser = await db.register_user([email, hash, name])
 
-            req.user = {
+            req.session.user = {
                 userId: newUser[0].id,
                 email: newUser[0].email,
                 name: newUser[0].full_name
             }
 
-            res.status(200).send(req.user)
+            res.status(200).send(req.session.user)
+        },
+    
+    logout:
+        async (req,res) => {
+            req.session.destroy()
+            res.status(200).send('Logged out successfully')
+        },
+
+    getUser:
+        async (req, res) => {
+            if(req.session.user) {
+                res.status(200).send(req.session.user)
+            } else {
+                res.sendStatus(400)
+            }
         }
 }
