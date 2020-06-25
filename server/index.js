@@ -6,6 +6,7 @@ const session = require('express-session')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const authCtrl = require('./controllers/authController')
 const invCtrl = require('./controllers/inventoryController')
+const ordCtrl = require('./controllers/orderController')
 
 const app = express()
 
@@ -25,6 +26,8 @@ app.get('',)//product??
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/register', authCtrl.register)
 app.post('/admin/product', invCtrl.addProduct)
+app.post('/orderitems', ordCtrl.addItems)
+app.post('/order', ordCtrl.addOrder)
 app.put('/admin/product/:id', invCtrl.updateProduct)
 app.delete('/auth/logout', authCtrl.logout)
 app.delete('/admin/product/:id', invCtrl.deleteProduct)
