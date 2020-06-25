@@ -37,12 +37,12 @@ CREATE TABLE "admins" (
 CREATE TABLE "products" (
   "id" SERIAL PRIMARY KEY,
   "name" text,
-  "imgage_url" text,
+  "image_url" text,
   "price" decimal,
   "status" products_status,
   "merchant_id" int NOT NULL,
   "created_at" timestamp,
-  "catergory" product_type,
+  "category" product_type,
   "description" text,
   "notes" text
 );
