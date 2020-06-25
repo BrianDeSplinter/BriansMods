@@ -26,7 +26,7 @@ app.get('',)//product??
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/register', authCtrl.register)
 app.post('/admin/product', invCtrl.addProduct)
-app.post('/orderitems', ordCtrl.addItems)
+app.post('/order/items', ordCtrl.addItems)
 app.post('/order', ordCtrl.addOrder)
 app.put('/admin/product/:id', invCtrl.updateProduct)
 app.delete('/auth/logout', authCtrl.logout)
