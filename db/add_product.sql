@@ -1,0 +1,1 @@
+INSERT INTO products (name, image_url, price, status, merchant_id, category, description, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
