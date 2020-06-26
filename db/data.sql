@@ -17,3 +17,7 @@ INSERT INTO merchants (merchant_name) VALUES ('BC Racing');
 -- ----------Joins----------
 SELECT products.name, merchants.merchant_name
 FROM products JOIN merchants ON products.merchant_id = merchants.id;
+
+SELECT oi.product_id, p.name, o.id, o.total, o.created_at
+FROM order_items oi JOIN orders o ON oi.order_id = o.id
+join products p on oi.product_id = p.id;
