@@ -79,28 +79,3 @@ ALTER TABLE "products" ADD FOREIGN KEY ("merchant_id") REFERENCES "merchants" ("
 ALTER TABLE "order_items" ADD FOREIGN KEY ("order_id") REFERENCES "orders" ("id");
 
 ALTER TABLE "order_items" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
-
-
-
-
-
-
-
-
-
-
-
-test:
-CREATE TABLE "test" (
-  "id" SERIAL PRIMARY KEY,
-  "name" text,
-  "created_at" timestamp DEFAULT now(),
-  "last_edit" timestamp
-);
-
-insert into test (name) values ('brian')
-
-
-update test
-set name = 'brian2', last_edit = now()
-where id = 1
