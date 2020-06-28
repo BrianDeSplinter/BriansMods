@@ -7,6 +7,7 @@ const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const authCtrl = require('./controllers/authController')
 const invCtrl = require('./controllers/inventoryController')
 const ordCtrl = require('./controllers/orderController')
+const crtCtrl = require('./controllers/cartController')
 
 const app = express()
 
@@ -23,11 +24,13 @@ app.use(
 app.get('/auth/user', authCtrl.getUser)
 app.get('/products', invCtrl.getInventory)
 app.get('/product/:id',invCtrl.getProduct)
+app.get('/cart', crtCtrl.getCart)
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/register', authCtrl.register)
 app.post('/admin/product', invCtrl.addProduct)
 app.post('/order/items', ordCtrl.addItems)
 app.post('/order', ordCtrl.addOrder)
+app.post('/cart', crtCtrl.addCart)
 app.put('/admin/product/:id', invCtrl.updateProduct)
 app.delete('/auth/logout', authCtrl.logout)
 app.delete('/admin/product/:id', invCtrl.deleteProduct)
