@@ -22,7 +22,7 @@ app.use(
 
 app.get('/auth/user', authCtrl.getUser)
 app.get('/products', invCtrl.getInventory)
-app.get('',)//product??
+app.get('/product/:id',invCtrl.getProduct)
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/register', authCtrl.register)
 app.post('/admin/product', invCtrl.addProduct)
