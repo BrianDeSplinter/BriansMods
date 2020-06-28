@@ -7,6 +7,26 @@ module.exports = {
 
             res.status(200).send(inventory)
         },
+
+    getProduct:
+        async (req, res) => {
+            const db = req.app.get('db')
+
+            const {id} = req.params
+
+            try{
+                const [product] = await db.products.find({id})
+
+                if(product){
+                    res.status(200).send(product)
+                } else {
+                    res.status(404).send('Product not found')
+                }
+            } catch (error){
+                res.sendStatus(500)
+            }
+
+        },
     
     addProduct:
         async (req, res) => {
