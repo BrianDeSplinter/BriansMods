@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {loginUser} from '../../redux/loginReducer'
-//import {withRouter} from 'react-router-dom'
 import './Login.css'
 
 class Login extends Component {
@@ -100,4 +99,5 @@ class Login extends Component {
     }
 }
 
-export default connect(null, {loginUser})(Login)
+// const mapStateToProps = reduxState => reduxState
+export default connect(/*mapStateToProps*/null, {loginUser})(Login)
