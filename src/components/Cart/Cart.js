@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
 
 class Cart extends Component {
     constructor() {
@@ -8,10 +10,12 @@ class Cart extends Component {
         }
     }
     render() {
+        console.log(this.props.cart)
         return(
             <div>I am the Cart!</div>
         )
     }
 }
 
-export default Cart
+const mapStateToProps = reduxState => reduxState
+export default connect(mapStateToProps)(Cart)
