@@ -1,15 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Navbar from './components/Navbar/Navbar'
 import routes from './routes'
+import {connect} from 'react-redux'
+import {getUser} from './redux/loginReducer'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar/>
-      {routes}
-    </div>
-  );
+class App extends Component{
+  
+  componentDidMount() {
+    this.props.getUser()
+  }
+
+  render() {
+    // console.log(this.props)
+    return (
+      <div className="App">
+        <Navbar/>
+        {routes}
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = reduxState => reduxState
+export default connect(mapStateToProps, {getUser})(App);
