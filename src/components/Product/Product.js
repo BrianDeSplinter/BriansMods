@@ -8,7 +8,7 @@ class Product extends Component {
         super()
         this.state = {
             //loading: true
-            cart: [],
+            cart: null,
             quantity: 1
         }
     }
@@ -41,12 +41,12 @@ class Product extends Component {
         }
     }
 
-    // addToCart(){
-
-    // }
+    addToCart(){
+        this.props.addToCart(this.state)
+    }
 
     render() {
-        console.log(this.state.quantity)
+        console.log(this.state)
         return(
             <div>
                 <h2>I am the individual product page!</h2>
