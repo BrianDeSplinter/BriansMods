@@ -8,6 +8,9 @@ import Checkout from './components/Checkout/Checkout'
 import Confirmation from './components/Confirmation/Confirmation'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
+import AdminMain from './components/AdminMain/AdminMain'
+import AdminEdit from './components/AdminEdit/AdminEdit'
+import AdminAdd from './components/AdminAdd/AdminAdd'
 
 export default(
     <Switch>
@@ -19,5 +22,8 @@ export default(
         <Route path='/confirmation' component={Confirmation}/>
         <Route path='/about' component={About}/>
         <Route path='/contact' component={Contact}/>
+        <Route path='/admin' component={AdminMain}/>
+        <Route path='/admin-edit/:id' component={AdminEdit}/>
+        <Route path='/admin-add' component={AdminAdd}/>
     </Switch>
 )
