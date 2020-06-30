@@ -7,8 +7,15 @@
     align-content: center;
 }
 
-.NavbarLinks {
+.NavbarLinks{
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    align-content: center;
+    align-items: center;
+}
+
+.Link{
+    color: black;
+    text-decoration: none;
+    margin: 10px;
 }
