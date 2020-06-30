@@ -8,7 +8,7 @@ class Product extends Component {
         super()
         this.state = {
             //loading: true
-            cart: null,
+            cart: {},
             quantity: 1
         }
     }
@@ -17,15 +17,15 @@ class Product extends Component {
         axios.get(`/product/${this.props.match.params.id}`)
         .then(res => {
             this.setState({
-                ...res.data, 
+                cart: res.data, 
                 // loading:false
             })
         })
     }
 
-    componentWillUnmount(){
-        console.log('Unmounted!')
-    }
+    // componentWillUnmount(){
+    //     console.log('Unmounted!')
+    // }
 
     increaseQuantity(){
         this.setState({
@@ -42,22 +42,23 @@ class Product extends Component {
     }
 
     addToCart(){
-        this.props.addToCart(this.state)
+        const cartObj = {...this.state.cart, quantity: this.state.quantity}
+        this.props.addToCart(cartObj)
     }
 
     render() {
-        console.log(this.state)
+        //console.log(this.state)
         return(
             <div>
                 <h2>I am the individual product page!</h2>
                 <div className='product'>
-                    <h4>{this.state.name}</h4>
-                    <img src={this.state.image_url} alt='failed to load :('/>
-                    <h5>Price: ${this.state.price}</h5>
-                    <h5>Category: {this.state.category}</h5>
-                    <p>Description: {this.state.description}</p>
-                    <p>Notes: {this.state.notes}</p>
-                    <h5>Availability: {this.state.status}</h5>
+                    <h4>{this.state.cart.name}</h4>
+                    <img src={this.state.cart.image_url} alt='failed to load :('/>
+                    <h5>Price: ${this.state.cart.price}</h5>
+                    <h5>Category: {this.state.cart.category}</h5>
+                    <p>Description: {this.state.cart.description}</p>
+                    <p>Notes: {this.state.cart.notes}</p>
+                    <h5>Availability: {this.state.cart.status}</h5>
                     <button
                         onClick={(e) => this.decreaseQuantity(e)}
                     >-</button>
@@ -65,7 +66,9 @@ class Product extends Component {
                     <button
                         onClick={(e) => this.increaseQuantity(e)}   
                     >+</button>
-                    <button>Add to Cart</button>
+                    <button
+                        onClick={(e) => this.addToCart()}
+                    >Add to Cart</button>
                 </div>
             </div>
         )
