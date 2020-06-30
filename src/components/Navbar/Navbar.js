@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {logoutUser} from '../../redux/loginReducer'
+import {getUser} from '../../redux/loginReducer'
 import './Navbar.css'
 import axios from 'axios'
 
@@ -12,6 +13,10 @@ class Navbar extends Component {
             cartQuantity: 0
         }
     }
+
+    componentDidMount() {
+        this.props.getUser()
+      }
 
     logoutHandler = (e) => {
         axios.delete('/auth/logout')
@@ -36,7 +41,7 @@ class Navbar extends Component {
 
     render(props) {
         const {isLoggedIn} = this.props.login
-        const {cart} = this.props.cart
+        //const {cart} = this.props.cart
 
         
         
@@ -49,15 +54,15 @@ class Navbar extends Component {
                 <h3>{isLoggedIn ? 'logged in' : 'logged out'}</h3>
                 <div>
                     <nav className='NavbarLinks'>
-                        <Link to='/'>Home</Link>
+                        <Link className='Link' to='/'>Home</Link>
                         <br/>
-                        <Link to='/about'>About</Link>
+                        <Link className='Link' to='/about'>About</Link>
                         <br/>
-                        <Link to='/contact'>Contact Us</Link>
+                        <Link className='Link' to='/contact'>Contact Us</Link>
                         <br/>
-                        {isLoggedIn ? <button onClick={e => this.logoutHandler(e)}>Logout</button> : <Link to='/login'>Login</Link>}
+                        {isLoggedIn ? <button onClick={e => this.logoutHandler(e)}>Logout</button> : <Link className='Link' to='/login'>Login</Link>}
                         <br/>
-                        <Link to='/cart'>Cart</Link>
+                        <Link className='Link' to='/cart'>Cart</Link>
                         <p>{this.state.cartQuantity}</p>
                     </nav>
                 </div>
@@ -68,7 +73,7 @@ class Navbar extends Component {
 
 const mapStateToProps = reduxState => reduxState
 
-export default connect(mapStateToProps, {logoutUser})(Navbar)
+export default connect(mapStateToProps, {logoutUser, getUser})(Navbar)
 
 
 
