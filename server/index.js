@@ -13,6 +13,7 @@ const ordCtrl = require('./controllers/orderController')
 const crtCtrl = require('./controllers/cartController')
 
 const app = express()
+app.use(express.static(`$(__dirname)/../build`))
 
 app.use(express.static(process.env.STATIC_DIR))
 app.use(express.json())
