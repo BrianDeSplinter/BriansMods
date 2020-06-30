@@ -4,7 +4,6 @@ class About extends Component {
     constructor() {
         super()
         this.state = {
-
         }
     }
     render() {
