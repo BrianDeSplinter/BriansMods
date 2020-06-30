@@ -70,7 +70,7 @@ class Login extends Component {
                         required
                         onChange={(e) => this.changeHandler(e)}/>
                     <input
-                        type='text'
+                        type='password'
                         placeholder='Password'
                         name='password'
                         value={password}
