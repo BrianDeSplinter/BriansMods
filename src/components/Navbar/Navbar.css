@@ -1,5 +1,23 @@
-/* div {
-    height: 25px;
-    width: 100vw;
-    background-color: green;
-} */
+.Navbar {
+  height: 80px;
+  width: 100vw;
+  background-color: #aab3a6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.NavbarLinks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+/*# sourceMappingURL=Navbar.css.map */
