@@ -6,7 +6,13 @@ import './Navbar.css'
 import axios from 'axios'
 
 class Navbar extends Component {
-    
+    constructor(){
+        super()
+        this.state = {
+            cartQuantity: 0
+        }
+    }
+
     logoutHandler = (e) => {
         axios.delete('/auth/logout')
         .then(res => {
@@ -14,16 +20,35 @@ class Navbar extends Component {
             //this.props.history.push('/')
         })
     }
+    
+    // componentDidUpdate(){
+    //     let total = 0
+
+    //     let cartCopy = this.state.props.slice()
+    //     cartCopy.forEach((item, i, arr) => {
+    //         total += arr[i].quantity
+    //     })
+    //     console.log('testtestest', this.props.cart)
+    //     this.setState({
+    //         cartQuantity: total
+    //     })
+    // }
 
     render(props) {
         const {isLoggedIn} = this.props.login
+        const {cart} = this.props.cart
+
+        
+        
+        
+        // console.log('this is navProps', cart, 'cartQuantity', cartQuantity)
        
         return(
-            <div>
+            <div className='Navbar'>
                 <h2>Brian's Mods</h2>
                 <h3>{isLoggedIn ? 'logged in' : 'logged out'}</h3>
                 <div>
-                    <nav>
+                    <nav className='NavbarLinks'>
                         <Link to='/'>Home</Link>
                         <br/>
                         <Link to='/about'>About</Link>
@@ -33,6 +58,7 @@ class Navbar extends Component {
                         {isLoggedIn ? <button onClick={e => this.logoutHandler(e)}>Logout</button> : <Link to='/login'>Login</Link>}
                         <br/>
                         <Link to='/cart'>Cart</Link>
+                        <p>{this.state.cartQuantity}</p>
                     </nav>
                 </div>
             </div>
@@ -82,3 +108,15 @@ export default connect(mapStateToProps, {logoutUser})(Navbar)
 // const mapStateToProps = reduxState => reduxState
 
 // export default connect(mapStateToProps)(Navbar)
+
+
+
+
+//-------------------
+// const cartQuantity = () => {
+//     let total = 0
+//     for(let i = 0; i < this.props.cart.length; i++){
+//         total + this.props.cart[i].quantity
+//     }
+//     return total
+// }
