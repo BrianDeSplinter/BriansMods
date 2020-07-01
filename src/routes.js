@@ -1,5 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute'
 import Home from './components/Home/Home'
 import Product from './components/Product/Product'
 import Cart from './components/Cart/Cart'
@@ -22,8 +23,8 @@ export default(
         <Route path='/confirmation' component={Confirmation}/>
         <Route path='/about' component={About}/>
         <Route path='/contact' component={Contact}/>
-        <Route path='/admin' component={AdminMain}/>
-        <Route path='/admin-edit/:id' component={AdminEdit}/>
-        <Route path='/admin-add' component={AdminAdd}/>
+        <ProtectedRoute path='/admin' component={AdminMain}/>
+        <ProtectedRoute path='/admin-edit/:id' component={AdminEdit}/>
+        <ProtectedRoute path='/admin-add' component={AdminAdd}/>
     </Switch>
 )
