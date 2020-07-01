@@ -8,14 +8,13 @@ class AdminAdd extends Component {
         super()
         this.state = {
             name: '',
-            image: '',
+            image_url: '',
             price: '',
             status: '',
-            merchantId: undefined,
+            merchant_id: '',
             category: '',
             description: '',
             notes: '',
-            cars: undefined
         }
         
     }
@@ -27,37 +26,32 @@ class AdminAdd extends Component {
     }
 
     clear = (e) => {
-        // e.preventDefault()
-        // const {email, password} = this.state
-        // axios.post('/auth/login', {email, password})
-        // .then(res => {
-        //     this.props.loginUser(res.data)
-        //     this.props.history.goBack()
-        // }).catch(err => {
-        //     alert('Could not log in')
-        // })
+        this.setState({
+            name: '',
+            image_url: '',
+            price: '',
+            status: '',
+            merchant_id: '',
+            category: '',
+            description: '',
+            notes: '',
+        })
     }
 
     addProduct = (e) => {
-        // e.preventDefault()
-        // const {email, password, name} = this.state
-        // axios.post('/auth/register', {email, password, name})
-        // .then(res => {
-        //     this.props.loginUser(res.data)
-        //     this.props.history.goBack()
-        // }).catch(err => {
-        //     alert(err.response.data)
-        // })
+        const {name, image_url, price, status, merchant_id, category, description, notes} = this.state
+        axios.post('/admin/product', {name, image_url, price, status, merchant_id, category, description, notes})
+        .then(res => (console.log(res)))
     }
 
 
     render() {
-        const {name, image, price, status, merchantId, category, description, notes} = this.state
+        const {name, image_url, price, status, merchant_id, category, description, notes} = this.state
         console.log('name', name)
-        console.log('image', image)
+        console.log('image', image_url)
         // console.log('price', price)
         // console.log('status', status)
-        // console.log('merchant Id', merchantId)
+        // console.log('merchant Id', merchant_id)
         // console.log('category', category)
         // console.log('description', description)
         // console.log('notes', notes)
@@ -65,7 +59,7 @@ class AdminAdd extends Component {
         return(
             <div>
                 <h3>I am the Add New Product Page!</h3>
-                <form name='userInfo'>
+                <form name='newProductInfo'>
                     <input
                         type='text'
                         placeholder='Product Name'
@@ -76,8 +70,8 @@ class AdminAdd extends Component {
                     <input
                         type='url'
                         placeholder='Image Url'
-                        name='image'
-                        value={image}
+                        name='image_url'
+                        value={image_url}
                         required
                         onChange={(e) => this.changeHandler(e)}/>
                     <input
@@ -96,9 +90,9 @@ class AdminAdd extends Component {
                     <input
                         type='text'
                         placeholder='Merchant Id'
-                        name='merchantId'
+                        name='merchant_id'
                         required
-                        value={merchantId}
+                        value={merchant_id}
                         onChange={(e) => this.changeHandler(e)}/>
                     <select id='category' name='category' onChange={(e) => this.changeHandler(e)}>
                         <option value=''>Category</option>
@@ -142,5 +136,3 @@ class AdminAdd extends Component {
 }
 
 export default AdminAdd
-
-// unrelated question: What is a day in the life of a dev like? is most of the time spent reviewing/optimizing old code or writing new code?
