@@ -5,6 +5,8 @@ INSERT INTO products (name, image_url, price, status, merchant_id, category, des
 
 INSERT INTO products (name, image_url, price, status, merchant_id, category, description, notes) VALUES ('Orion V4 LED Angel Eyes', 'https://www.umnitza.com/media/catalog/product/cache/1/thumbnail/85x/bfcb55b8c67a222dedb1e590006ca5e6/o/v/ov4e92_04.jpg', 349.99, 'in_stock', 5, 'exterior', 'Brightest Angel Eyes Ever Produced', 'notes, notes, notes');
 
+INSERT INTO products (name, image_url, price, status, merchant_id, category, description, notes) VALUES ('TEST', 'https://www.umnitza.com/media/catalog/product/cache/1/thumbnail/85x/bfcb55b8c67a222dedb1e590006ca5e6/o/v/ov4e92_04.jpg', 3.99, 'in_stock', 5, 'exterior', 'TEST Brightest Angel Eyes Ever Produced', 'TEST, TEST, TEST');
+
 -- ----------Merchant Id's----------
 INSERT INTO merchants (merchant_name) VALUES ('Burger Motorsports');
 INSERT INTO merchants (merchant_name) VALUES ('Turner Motorsport');
