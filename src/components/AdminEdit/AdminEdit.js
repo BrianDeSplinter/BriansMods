@@ -132,5 +132,4 @@ class AdminEdit extends Component {
     }
 }
 
-
 export default AdminEdit

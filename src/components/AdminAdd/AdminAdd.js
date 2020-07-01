@@ -16,7 +16,6 @@ class AdminAdd extends Component {
             description: '',
             notes: '',
         }
-        
     }
 
     changeHandler = (e) => {
@@ -44,17 +43,8 @@ class AdminAdd extends Component {
         .then(res => (console.log(res)))
     }
 
-
     render() {
         const {name, image_url, price, status, merchant_id, category, description, notes} = this.state
-        console.log('name', name)
-        console.log('image', image_url)
-        // console.log('price', price)
-        // console.log('status', status)
-        // console.log('merchant Id', merchant_id)
-        // console.log('category', category)
-        // console.log('description', description)
-        // console.log('notes', notes)
 
         return(
             <div>
