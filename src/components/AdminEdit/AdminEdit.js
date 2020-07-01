@@ -20,21 +20,28 @@ class AdminEdit extends Component {
         })
     }
 
+    clear = (e) => {
+        this.props.history.push('/admin')
+    }
+
+    changeHandler = (e) => {
+        // this.setState({
+        //     [e.target.name]: e.target.value 
+        // })
+    }
+
+    addProduct = (e) => {
+        // const {name, image_url, price, status, merchant_id, category, description, notes} = this.state
+        // axios.post('/admin/product', {name, image_url, price, status, merchant_id, category, description, notes})
+        // .then(res => (console.log(res)))
+    }
+
     render() {
-        // const {name, image, price, status, merchantId, category, description, notes} = this.state
+        const {name, image_url, price, status, merchant_id, category, description, notes} = this.state.cart
         return(
             <div>
                 <h2>I am the Admin Edit product page!</h2>
-                <div className='product'>
-                    <h4>{this.state.cart.name}</h4>
-                    <img src={this.state.cart.image_url} alt='failed to load :('/>
-                    <h5>Price: ${this.state.cart.price}</h5>
-                    <h5>Category: {this.state.cart.category}</h5>
-                    <p>Description: {this.state.cart.description}</p>
-                    <p>Notes: {this.state.cart.notes}</p>
-                    <h5>Availability: {this.state.cart.status}</h5>
-                </div>
-                {/* <form name='userInfo'>
+                <form name='userInfo'>
                     <input
                         type='text'
                         placeholder='Product Name'
@@ -43,10 +50,10 @@ class AdminEdit extends Component {
                         required
                         onChange={(e) => this.changeHandler(e)}/>
                     <input
-                        type='text'
+                        type='url'
                         placeholder='Image Url'
-                        name='image'
-                        value={image}
+                        name='image_url'
+                        value={image_url}
                         required
                         onChange={(e) => this.changeHandler(e)}/>
                     <input
@@ -56,50 +63,56 @@ class AdminEdit extends Component {
                         required
                         value={price}
                         onChange={(e) => this.changeHandler(e)}/>
-                    <input
-                        type='text'
-                        placeholder='Status'
-                        name='status'
-                        required
-                        value={status}
-                        onChange={(e) => this.changeHandler(e)}/>
+                    <select id='status' name='status' onChange={(e) => this.changeHandler(e)}>
+                        <option value=''>Status</option>
+                        <option value='in_stock'>In Stock</option>
+                        <option value='running_low'>Running Low</option>
+                        <option value='out_of_stock'>Out of Stock</option>
+                    </select>   
                     <input
                         type='text'
                         placeholder='Merchant Id'
-                        name='merchantId'
+                        name='merchant_id'
                         required
-                        value={merchantId}
+                        value={merchant_id}
                         onChange={(e) => this.changeHandler(e)}/>
-                    <input
-                        type='text'
-                        placeholder='Category'
-                        name='category'
-                        required
-                        value={category}
-                        onChange={(e) => this.changeHandler(e)}/> 
-                    <input
-                        type='text'
+                    <select id='category' name='category' onChange={(e) => this.changeHandler(e)}>
+                        <option value=''>Category</option>
+                        <option value='performance'>Performance</option>
+                        <option value='engine'>Engine</option>
+                        <option value='suspension'>Suspension</option>
+                        <option value='exhaust'>Exhaust</option>
+                        <option value='interior'>Interior</option>
+                        <option value='exterior'>Exterior</option>
+                        <option value='merch'>Merch</option>
+                    </select>  
+                    <textarea
                         placeholder='Description'
                         name='description'
+                        rows='3'
+                        cols='20'
                         required
                         value={description}
                         onChange={(e) => this.changeHandler(e)}/> 
-                    <input
-                        type='text'
+                    <textarea
                         placeholder='Notes'
                         name='notes'
+                        rows='3'
+                        cols='20'
                         required
                         value={notes}
-                        onChange={(e) => this.changeHandler(e)}/>    
+                        onChange={(e) => this.changeHandler(e)}/> 
+                    
                     <button
                         type='submit'
-                        value='Login'
-                        onClick={(e) => this.login(e)}>Cancel</button>:
+                        value='clear'
+                        onClick={(e) => this.clear(e)}>Cancel</button>:
                     <button
                         type='submit'
-                        value='Register'
-                        onClick={(e) => this.register(e)}>Add Product</button>
-                </form> */}
+                        value='addProduct'
+                        onClick={(e) => this.addProduct(e)}>Add Product</button>
+                </form>
+                
             </div>
         )
     }
