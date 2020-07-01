@@ -14,6 +14,9 @@ INSERT INTO merchants (merchant_name) VALUES ('Umnitza');
 INSERT INTO merchants (merchant_name) VALUES ('Mod Bargains');
 INSERT INTO merchants (merchant_name) VALUES ('BC Racing');
 
+-- ----------Admins----------
+INSERT INTO admins (admin_name, admin_id) VALUES ('Brian', 1)
+
 -- ----------Joins----------
 SELECT products.name, merchants.merchant_name
 FROM products JOIN merchants ON products.merchant_id = merchants.id;
@@ -21,3 +24,6 @@ FROM products JOIN merchants ON products.merchant_id = merchants.id;
 SELECT oi.product_id, p.name, o.id, o.total, o.created_at
 FROM order_items oi JOIN orders o ON oi.order_id = o.id
 join products p on oi.product_id = p.id;
+
+select u.id, u.full_name, u.email, u.password, a.id
+from users u join admins a on u.id = a.admin_id;
