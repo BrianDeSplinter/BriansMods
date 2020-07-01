@@ -33,7 +33,7 @@ export function getUser(){
     }
 }
 
-export default function (state = initialState, action) {
+export default function loginReducer(state = initialState, action) {
     switch(action.type) {
         case LOGIN_USER:
             return {...state, user: action.payload, isLoggedIn: true}
