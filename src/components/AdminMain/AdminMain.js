@@ -10,6 +10,7 @@ class AdminMain extends Component {
         this.state = {
             adminInventory: []
         }
+        this.update = this.update.bind(this)
     }
 
     componentDidMount(){
@@ -24,8 +25,16 @@ class AdminMain extends Component {
         console.log('Add New Product')
     }
 
+    update(index){
+        let newInventory = this.state.adminInventory
+        newInventory.splice(index, 1)
+        this.setState({
+            adminInventory: newInventory
+        })
+    }
+
     render() {
-        const adminProducts = this.state.adminInventory.map(e => (
+        const adminProducts = this.state.adminInventory.map((e, i) => (
             <AdminProducts
                 key={e.id}
                 id={e.id}
@@ -36,7 +45,8 @@ class AdminMain extends Component {
                 category={e.category}
                 description={e.description}
                 notes={e.notes}
-                //delete={this.deleteHandler}
+                index={i}
+                update={this.update}
             />
         ))
         return(

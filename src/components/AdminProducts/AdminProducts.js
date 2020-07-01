@@ -1,14 +1,12 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 class AdminProducts extends Component {
     deleteHandler() {
-        console.log('Delete')
-    }
-
-    editHandler() {
-        console.log('Edit')
-        
+        axios.delete(`/admin/product/${this.props.id}`)
+        .then(res => {{console.log(res)}})
+        this.props.update(this.props.index)
     }
     
     render(){
@@ -31,7 +29,7 @@ class AdminProducts extends Component {
                         >Edit
                     </Link>
                     <button 
-                        onClick={(e) => {this.deleteHandler()}}
+                        onClick={(e) => {if(window.confirm(`Are you sure you wish to delete ${this.props.name}`)){this.deleteHandler()};}}
                         >Delete
                     </button>
                 </div>
@@ -40,4 +38,4 @@ class AdminProducts extends Component {
     }    
 }
 
-export default AdminProducts
+export default AdminProducts                    
