@@ -6,7 +6,14 @@ class AdminEdit extends Component {
         super()
         this.state = {
             //loading: true
-            cart: {},
+            name: '',
+            image_url: '',
+            price: '',
+            status: '',
+            merchant_id: '',
+            category: '',
+            description: '',
+            notes: ''
         }
     }
 
@@ -14,8 +21,16 @@ class AdminEdit extends Component {
         axios.get(`/product/${this.props.match.params.id}`)
         .then(res => {
             this.setState({
-                cart: res.data, 
                 // loading:false
+                id: res.data.id,
+                name: res.data.name,
+                image_url: res.data.image_url,
+                price: res.data.price,
+                status: res.data.status,
+                merchant_id: res.data.merchant_id,
+                category: res.data.category,
+                description: res.data.description,
+                notes: res.data.notes
             })
         })
     }
@@ -25,19 +40,19 @@ class AdminEdit extends Component {
     }
 
     changeHandler = (e) => {
-        // this.setState({
-        //     [e.target.name]: e.target.value 
-        // })
+        this.setState({
+            [e.target.name]: e.target.value 
+        })
     }
 
-    addProduct = (e) => {
-        // const {name, image_url, price, status, merchant_id, category, description, notes} = this.state
-        // axios.post('/admin/product', {name, image_url, price, status, merchant_id, category, description, notes})
-        // .then(res => (console.log(res)))
+    updateProduct = (e) => {
+        const {id, name, image_url, price, status, merchant_id, category, description, notes} = this.state
+        axios.put(`/admin/product/${id}`, {name, image_url, price, status, merchant_id, category, description, notes})
+        .then(res => (console.log('Updated!', res)))
     }
 
     render() {
-        const {name, image_url, price, status, merchant_id, category, description, notes} = this.state.cart
+        const {name, image_url, price, status, merchant_id, category, description, notes} = this.state
         return(
             <div>
                 <h2>I am the Admin Edit product page!</h2>
@@ -102,15 +117,14 @@ class AdminEdit extends Component {
                         required
                         value={notes}
                         onChange={(e) => this.changeHandler(e)}/> 
-                    
                     <button
                         type='submit'
                         value='clear'
                         onClick={(e) => this.clear(e)}>Cancel</button>:
                     <button
                         type='submit'
-                        value='addProduct'
-                        onClick={(e) => this.addProduct(e)}>Add Product</button>
+                        value='updateProduct'
+                        onClick={(e) => this.updateProduct(e)}>Update Product</button>
                 </form>
                 
             </div>
