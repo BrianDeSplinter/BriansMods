@@ -7,19 +7,30 @@ module.exports = {
             const {email, password} = req.body
 
             const user = await db.check_user(email)
+            const admin = await db.admin_check(user[0].id)
+            
 
             if(!user[0]){
                 return res.status(403).send('Email or Password incorrect')
             } else {
                 const authenticated = bcrypt.compareSync(password, user[0].password)
-                if(authenticated){
+                if(authenticated && !admin[0]){
                     req.session.user = {
                         userId: user[0].id,
                         email: user[0].email,
-                        name: user[0].full_name
+                        name: user[0].full_name,
                     }
                     res.status(200).send(req.session.user)
-                } else {
+                } else if(authenticated && admin[0]){
+                    req.session.user = {
+                        userId: user[0].id,
+                        email: user[0].email,
+                        name: user[0].full_name,
+                        adminId: admin[0].id
+                    }
+                    res.status(200).send(req.session.user)
+                }
+                else {
                     res.status(403).send('Username or Password incorrect')
                 }
             }
