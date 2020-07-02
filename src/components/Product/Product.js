@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {addToCart} from '../../redux/cartReducer'
+import './Product.css'
 
 class Product extends Component {
     constructor() {
@@ -49,26 +50,35 @@ class Product extends Component {
     render() {
         //console.log(this.state)
         return(
-            <div>
-                <h2>I am the individual product page!</h2>
+            <div >
+                <h2>{this.state.cart.name}</h2>
                 <div className='product'>
-                    <h4>{this.state.cart.name}</h4>
-                    <img src={this.state.cart.image_url} alt='failed to load :('/>
-                    <h5>Price: ${this.state.cart.price}</h5>
-                    <h5>Category: {this.state.cart.category}</h5>
-                    <p>Description: {this.state.cart.description}</p>
-                    <p>Notes: {this.state.cart.notes}</p>
-                    <h5>Availability: {this.state.cart.status}</h5>
-                    <button
-                        onClick={(e) => this.decreaseQuantity(e)}
-                    >-</button>
-                    <p>{this.state.quantity}</p>
-                    <button
-                        onClick={(e) => this.increaseQuantity(e)}   
-                    >+</button>
-                    <button
-                        onClick={(e) => this.addToCart()}
-                    >Add to Cart</button>
+                    <div className='image'>
+                        <img src={this.state.cart.image_url} alt='failed to load :('/>
+                    </div>
+                    <div className='info'>
+                        <p>Price: ${this.state.cart.price}</p>
+                        <p>Category: {this.state.cart.category}</p>
+                        <p>Description: {this.state.cart.description}</p>
+                        <p>Notes: {this.state.cart.notes}</p>
+                        <p>Availability: {this.state.cart.status}</p>
+                    </div>
+                    <div className='addToCart'>
+                        <div className='changeQ'>
+                            <button
+                                onClick={(e) => this.decreaseQuantity(e)}
+                            >-</button>
+                            <p>{this.state.quantity}</p>
+                            <button
+                                onClick={(e) => this.increaseQuantity(e)}   
+                            >+</button>
+                        </div>
+                        <div className='addToCart'>
+                            <button
+                                onClick={(e) => this.addToCart()}
+                            >Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

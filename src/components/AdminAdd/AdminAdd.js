@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import './AdminAdd.css'
 
 
 
@@ -47,9 +48,9 @@ class AdminAdd extends Component {
         const {name, image_url, price, status, merchant_id, category, description, notes} = this.state
 
         return(
-            <div>
-                <h3>I am the Add New Product Page!</h3>
-                <form name='newProductInfo'>
+            <div classname='addProduct'>
+                <h3>Add A New Product!</h3>
+                <form name='newProductInfo' className='newProductInfo'>
                     <input
                         type='text'
                         placeholder='Product Name'
@@ -114,7 +115,7 @@ class AdminAdd extends Component {
                     <button
                         type='submit'
                         value='clear'
-                        onClick={(e) => this.clear(e)}>Cancel</button>:
+                        onClick={(e) => this.clear(e)}>Cancel</button>
                     <button
                         type='submit'
                         value='addProduct'

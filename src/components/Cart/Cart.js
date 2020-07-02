@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import CartItem from '../CartItem/CartItem'
+import './Cart.css'
 
 class Cart extends Component {
     constructor() {
@@ -90,10 +91,10 @@ class Cart extends Component {
 
         return(
             <div>
-                <h2>I am the Cart!</h2>
+                <h2>Cart</h2>
                 {items}
-                <h3>Cart Total: ${this.state.cartTotal}</h3>
-                <Link to='/checkout'>Checkout</Link>
+                {/* <h3>Cart Total: ${this.state.cartTotal}</h3> */}
+                <Link className='checkoutLink' to='/checkout'>Checkout Here</Link>
             </div>
         )
     }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import './AdminEdit.css'
 
 class AdminEdit extends Component {
     constructor() {
@@ -54,9 +55,9 @@ class AdminEdit extends Component {
     render() {
         const {name, image_url, price, status, merchant_id, category, description, notes} = this.state
         return(
-            <div>
+            <div className='editProductInfo'>
                 <h2>I am the Admin Edit product page!</h2>
-                <form name='userInfo'>
+                <form name='productInfo' className='productInfo'>
                     <input
                         type='text'
                         placeholder='Product Name'
@@ -120,7 +121,7 @@ class AdminEdit extends Component {
                     <button
                         type='submit'
                         value='clear'
-                        onClick={(e) => this.clear(e)}>Cancel</button>:
+                        onClick={(e) => this.clear(e)}>Cancel</button>
                     <button
                         type='submit'
                         value='updateProduct'

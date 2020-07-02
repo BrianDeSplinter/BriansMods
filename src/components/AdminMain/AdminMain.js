@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import AdminProducts from '../AdminProducts/AdminProducts'
+import './AdminMain.css'
 
 
 class AdminMain extends Component {
@@ -52,7 +53,7 @@ class AdminMain extends Component {
         return(
             <div>
                 <h3>Admin Products Page</h3>
-                <Link to={`/admin-add`}>Add New Product
+                <Link className='addProductLink' to={`/admin-add`}>Add New Product
                 </Link>
                 {adminProducts}
             </div>
