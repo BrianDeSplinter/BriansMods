@@ -1,0 +1,13 @@
+.editProductInfo{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productInfo{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}

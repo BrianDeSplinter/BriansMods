@@ -1,0 +1,10 @@
+.aboutInfo{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.aboutInfo p {
+    align-items: center;
+}
