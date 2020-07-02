@@ -1,0 +1,11 @@
+.product img{
+   height: 100px;
+   width: 100px;
+}
+
+
+
+.productLink{
+    text-decoration: none;
+    color: black;
+}
