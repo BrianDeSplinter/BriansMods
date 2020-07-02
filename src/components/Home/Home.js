@@ -34,8 +34,8 @@ class Home extends Component {
             />
         ))
         return(
-            <div>
-                <h3>Products</h3>
+            <div className='allProducts'>
+                <h3>All Products</h3>
                 {products}
             </div>
         )

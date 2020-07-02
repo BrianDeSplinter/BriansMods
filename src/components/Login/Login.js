@@ -55,9 +55,9 @@ class Login extends Component {
     render() {
         const {email, password, name, login} = this.state
         return(
-            <div>
-                <h3>I am the {login ? 'Login' : 'Register'} Page!</h3>
-                <form name='userInfo'>
+            <div className='loginForm'>
+                <h3>Please {login ? 'Login' : 'Register'} Here!</h3>
+                <form name='userInfo' className='userInfo'>
                     <button
                         type='switch'
                         value='switch'

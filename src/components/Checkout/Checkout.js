@@ -9,12 +9,23 @@ class Checkout extends Component {
     }
     render() {
         return(
-            <div>I am the Checkout Page!</div>
+            <div>
+                <p>Thank you for placing your order. An email confirmation will be sent to you shortly!
+                </p>
+            </div>
         )
     }
 }
 
 export default Checkout
+
+
+
+
+
+
+
+
 
 //--------------------------------------------------------
 // A reference to Stripe.js

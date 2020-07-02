@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {logoutUser} from '../../redux/loginReducer'
 import {getUser} from '../../redux/loginReducer'
-import './Navbar.css'
 import axios from 'axios'
+import './Navbar.css'
 
 class Navbar extends Component {
     constructor(){
@@ -42,16 +42,11 @@ class Navbar extends Component {
     render(props) {
         const {isLoggedIn} = this.props.login
         //const {cart} = this.props.cart
-
-        
-        
-        
-        // console.log('this is navProps', cart, 'cartQuantity', cartQuantity)
        
         return(
             <div className='Navbar'>
                 <h2>Brian's Mods</h2>
-                <h3>{isLoggedIn ? 'logged in' : 'logged out'}</h3>
+                {/* <h3>{isLoggedIn ? 'logged in' : 'logged out'}</h3> */}
                 <div>
                     <nav className='NavbarLinks'>
                         <Link className='Link' to='/'>Home</Link>
@@ -60,10 +55,10 @@ class Navbar extends Component {
                         <br/>
                         <Link className='Link' to='/contact'>Contact Us</Link>
                         <br/>
-                        {isLoggedIn ? <button onClick={e => this.logoutHandler(e)}>Logout</button> : <Link className='Link' to='/login'>Login</Link>}
+                        {isLoggedIn ? <button className='logout' onClick={e => this.logoutHandler(e)}>Logout</button> : <Link className='Link' to='/login'>Login</Link>}
                         <br/>
                         <Link className='Link' to='/cart'>Cart</Link>
-                        <p>{this.state.cartQuantity}</p>
+                        {/* <p>{this.state.cartQuantity}</p> */}
                     </nav>
                 </div>
             </div>

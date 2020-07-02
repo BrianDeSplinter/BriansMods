@@ -9,7 +9,10 @@ class Contact extends Component {
     }
     render() {
         return(
-            <div>I am the Contact Page!</div>
+            <div>
+                <h3>Contact Page!</h3>
+                <p>This is where some contact info would go if this were a real website!</p>
+            </div>
         )
     }
 }

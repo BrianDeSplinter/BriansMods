@@ -33,7 +33,7 @@ class CartItem extends Component {
         return(
             <div>
                 <div className='product'>
-                    <h4>{this.props.name}</h4>
+                    <h2>{this.props.name}</h2>
                     <img src={this.props.image} alt='failed to load :('/>
                     <h5>Price: ${this.props.price}</h5>
                     <button
